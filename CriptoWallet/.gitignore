@@ -1,0 +1,5 @@
+# .gitignore
+__pycache__/
+*.json       # Opcional: si cada se desea que la aplicación cree su propio archivo de datos o sean gestionados manualmente
+.env         # Si se usan claves API reales: .env contiene variables de entorno
+.DS_Store
