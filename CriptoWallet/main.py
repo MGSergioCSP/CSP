@@ -1,6 +1,18 @@
+"""
+Módulo principal del proyecto CriptoWallet.
+
+Este módulo coordina la ejecución del programa, gestionando el flujo entre
+la interfaz de usuario, la lógica de negocio y la persistencia de datos.
+"""
+
 from app import data_manager, crypto_logic, ui          # Están en un subdirectorio app/
 
 def main():
+    """
+    Punto de entrada principal de la aplicación.
+    
+    Carga los datos iniciales y gestiona el bucle principal del menú interactivo.
+    """
     # 1. Carga del estado inicial
     cartera = data_manager.cargar_datos()
 

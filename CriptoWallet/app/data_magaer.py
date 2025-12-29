@@ -1,3 +1,10 @@
+"""
+Módulo para la gestión de persistencia de datos.
+
+Se encarga de cargar y guardar la información de la cartera en un archivo JSON
+utilizando la biblioteca pathlib para la gestión de rutas.
+"""
+
 import json
 from pathlib import Path
 
@@ -6,8 +13,11 @@ ARCHIVO_DATOS = Path("cartera.json")
 
 def cargar_datos() -> list:
     """
-    Carga la cartera desde un archivo JSON. 
-    Devuleve una lista vacía si no existe o el archivo está corrupto.
+    Carga la lista de transacciones desde el archivo JSON de datos.
+
+    Returns:
+        list: Una lista de transacciones. Devuelve una lista vacía si el archivo
+              no existe o si ocurre un error durante la lectura.
     """
     # Método orientado a objetos para comprobar existencia
     if not ARCHIVO_DATOS.exists():
@@ -21,7 +31,12 @@ def cargar_datos() -> list:
         return []
 
 def guardar_datos(datos: list):
-    """Guarda la lista de transacciones en el archivo JSON."""
+    """
+    Guarda la lista de transacciones proporcionada en el archivo JSON.
+
+    Args:
+        datos (list): La lista de transacciones a persistir.
+    """
     try:
         # Escritura usando el método del objeto Path
         with ARCHIVO_DATOS.open("w", encoding="utf-8") as f:
