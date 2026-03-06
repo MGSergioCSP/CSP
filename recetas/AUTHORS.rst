@@ -2,4 +2,4 @@
 Contributors
 ============
 
-* Sergio MuiÃ±os <a25sergiomg@iessancelemente.net>
+* Sergio Muiños <a25sergiomg@iessancelemente.net>
