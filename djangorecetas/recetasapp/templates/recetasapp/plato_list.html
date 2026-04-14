@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Os teus Pratos</h2>
+    <a href="{% url 'plato_create' %}" class="btn btn-success">Engadir Prato</a>
+</div>
+
+<div class="list-group">
+    {% for plato in platos %}
+        <div class="list-group-item list-group-item-action d-flex gap-3 py-3">
+            <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                    <h6 class="mb-0">{{ plato.nome|title }}</h6>
+                    <p class="mb-0 opacity-75">{{ plato.tempada|default:"Sen tempada" }} | {{ plato.preparacion|slice:":50" }}...</p>
+                </div>
+                <div class="text-nowrap">
+                    <a href="{% url 'plato_detail' plato.pk %}" class="btn btn-sm btn-info">Ver</a>
+                    <a href="{% url 'plato_update' plato.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{% url 'plato_delete' plato.pk %}" class="btn btn-sm btn-danger">Borrar</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>Aínda non engadiches ningún prato.</p>
+    {% endfor %}
+</div>
+{% endblock %}

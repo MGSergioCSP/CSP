@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card border-danger mb-3 mx-auto" style="max-width: 500px;">
+  <div class="card-header bg-danger text-white">Confirmar Desplanificación</div>
+  <div class="card-body">
+    <h5 class="card-title">Retirar o prato "{{ entrada.plato.nome }}"?</h5>
+    <p class="card-text">Estás a piques de retirar este prato do día <strong>{{ entrada.data|date:"l, j F Y" }} - {{ entrada.momento }}</strong>.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Si, retirar</button>
+        <a href="{% url 'menu_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

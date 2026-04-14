@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Django Recetas{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Benvido a Django Recetas</h1>
+        <p class="col-md-8 fs-4">Aplicación para a organización semanal de comidas e a gravación de receitas marabillosas.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'menu_list' %}" role="button">Ver os meus Menús</a>
+    </div>
+</div>
+{% endblock %}

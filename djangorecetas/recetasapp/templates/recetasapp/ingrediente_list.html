@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Os teus Ingredientes</h2>
+    <a href="{% url 'ingrediente_create' %}" class="btn btn-success">Novo Ingrediente</a>
+</div>
+
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-2">
+    {% for ingrediente in ingredientes %}
+        <div class="col">
+            <div class="card h-100 shadow-sm border-0 bg-light">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ ingrediente.nome|title }}</h5>
+                    <a href="{% url 'ingrediente_delete' ingrediente.pk %}" class="btn btn-sm btn-outline-danger mt-2">Borrar</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p class="w-100">Non hai ingredientes rexistrados.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow-sm mb-4">
+    <div class="row g-0">
+        {% if plato.fotoUrl %}
+        <div class="col-md-4">
+            <img src="{{ plato.fotoUrl }}" class="img-fluid rounded-start h-100 object-fit-cover" alt="{{ plato.nome }}">
+        </div>
+        {% endif %}
+        <div class="col-md-8">
+            <div class="card-body">
+                <h2 class="card-title">{{ plato.nome|upper }}</h2>
+                <p class="card-text text-muted"><small>Tempada: {{ plato.tempada|default:"Sen especificar" }}</small></p>
+                <h5 class="mt-4">Preparación</h5>
+                <p class="card-text">{{ plato.preparacion|linebreaks }}</p>
+                
+                <h5 class="mt-4">Ingredientes</h5>
+                <ul class="list-group list-group-flush mb-4">
+                    {% for lina in plato.lina_ingredientes.all %}
+                        <li class="list-group-item">{{ lina.cantidade }} {{ lina.get_unidade_display }} de <strong>{{ lina.ingrediente.nome|title }}</strong></li>
+                    {% empty %}
+                        <li class="list-group-item text-muted">Aínda non hai ingredientes.</li>
+                    {% endfor %}
+                </ul>
+
+                <a href="{% url 'plato_list' %}" class="btn btn-outline-secondary">Volver aos pratos</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

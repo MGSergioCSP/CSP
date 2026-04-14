@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow-sm border-0 mx-auto" style="max-width: 500px;">
+    <div class="card-body">
+        <h3 class="card-title mb-4">{{ title|default:"Xestionar Menú do Día" }}</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">Planificar</button>
+                <a href="{% url 'menu_list' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

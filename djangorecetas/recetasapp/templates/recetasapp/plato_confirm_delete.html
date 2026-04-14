@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card border-danger mb-3 mx-auto" style="max-width: 500px;">
+  <div class="card-header bg-danger text-white">Confirmar Borrado</div>
+  <div class="card-body">
+    <h5 class="card-title">Estás seguro de que queres borrar "{{ plato.nome }}"?</h5>
+    <p class="card-text">Esta acción non se pode desfacer.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Si, borrar</button>
+        <a href="{% url 'plato_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
